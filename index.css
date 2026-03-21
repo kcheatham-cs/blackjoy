@@ -1,0 +1,63 @@
+body{
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
+#title{
+    color: rgb(251, 213, 144);
+    font-family : 'Franklin Gothic Medium', Cochin, Georgia, Times, 'Times New Roman', serif ;
+    text-align: center;
+    font-size: 5vw;
+    text-transform: uppercase;
+}
+
+#subheading{
+    color: rgb(241, 179, 63);
+    text-align: center;
+    font-size: 2vw;
+    margin-top: -15px;
+    font-family : 'Franklin Gothic Medium', Cochin, Georgia, Times, 'Times New Roman', serif ;
+    text-transform: capitalize;
+}
+
+#description{
+    color: rgb(251, 213, 144);
+    text-align: center;
+    font-size: 1vw;
+    font-family : 'Franklin Gothic Medium', Cochin, Georgia, Times, 'Times New Roman', serif ;
+    height: 3vw;
+}
+
+#button{
+    background-color: rgb(241, 179, 63);
+    color: rgb(251, 229, 186);
+    font-size: 1.3vw;
+    font-style: bold;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-family : 'Franklin Gothic Medium', Cochin, Georgia, Times, 'Times New Roman', serif ;
+    text-align: center;
+}
+.container1{
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 12vw;
+    margin-left: 20vw ;
+    margin-right: 20vw;
+    height: 37vw;
+    
+
+}
+.container2{
+    display: inline-block;
+    justify-content: center; /* Centers horizontally */
+    align-items: flex-start;
+    position: absolute;
+    bottom: 15vw;
+    
+}

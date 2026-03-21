@@ -1,16 +1,66 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Black Joy App</title>
+         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Load CSS file here -->
          <link rel=" stylesheet" type="text/css" href="index.css" />
         <!-- Load Javascript file here -->
 
         <!-- Load Firebase file link here-->
-    </head>
-    <body>
-        <!-- Add Componets here hellooo -->
 
+
+         <!-- Load title font link here-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+    </head>
+    <body onload="checkVerification()">
+        <script src="app.js"></script>
+
+        <!-- Hidden signup form -->
+    <form id="signupForm" style="display: none;">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button type="button" onclick="signUp()">Sign Up</button>
+    </form>
+
+    <!-- Optional login form -->
+    <form id="loginForm">
+        <input type="email" id="logUser" placeholder="Email">
+        <input type="password" id="logPass" placeholder="Password">
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+        <!-- Add Componets here -->
+        <div class = "container1">
+            <div>
+            <h1 id = "title">  Black Joy</h1>
+            <h2 id = "subheading"> For Us. By Us.</h2>
+            <p id = "description"> short description here</p>
+        </div>
+      
+        <div class = "container2">
+             <button id= "button"> Come On In</button>
+        </div>
+         </div>
+
+         <div id="tabContainer">
+        <!-- Tabs -->
+        <button onclick="switchTab('Black Achievements')">#BLACKPEOPLEWINNING</button>
+        <button onclick="switchTab('All Facts Black')">#WEDIDDAT</button>
+        <button onclick="switchTab('Black Politics')">#BLACKPEOPLEWITHPOWER</button>
+        <button onclick="switchTab('Louisiana Food Related')">#WHEREWEEATINGAT</button>
+        <button onclick="switchTab('Helpful Tips & Tricks')">#HELPABROTHAOUT</button>
+        <button onclick="switchTab('Resources')">#NEEDDAT</button>
+        <button onclick="switchTab('Sports')">#THEGAMEON?</button>
+        <button onclick="switchTab('Entertainment')">#WELITTTTT</button>
+        </div>
+
+        <!-- Feed -->
+        <div id="content">
+        <!-- The content for the active tab will appear here -->
+</div>
+        
     </body>
 
 </html>
