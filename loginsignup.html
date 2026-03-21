@@ -6,22 +6,27 @@
     <body onload="checkVerification()"> 
         <script src="app.js"></script>
 
-         <!-- Hidden signup form -->
+        <!--Question should show first --> 
+        <div id="questionSection">
+    
+        </div>
+
+         <!-- signup hidden -->
     <form id="signupForm" style="display: none;">
         <input type="email" id="email" placeholder="Email">
         <input type="password" id="password" placeholder="Password">
         <button type="button" onclick="signUp()">Sign Up</button>
     </form>
 
-    <!-- Optional login form -->
+    <!-- login (hidden) -->
     <form id="loginForm">
         <input type="email" id="logUser" placeholder="Email">
         <input type="password" id="logPass" placeholder="Password">
         <button type="button" onclick="login()">Login</button>
     </form>
-    </body>
+    
+    <!--Tabs(hidden)-->
     <div id="tabContainer">
-  <!-- Tabs -->
   <button onclick="switchTab('Black Achievements')">Black Achievements</button>
   <button onclick="switchTab('All Facts Black')">All Facts Black</button>
   <button onclick="switchTab('Black Politics')">Black Politics</button>
@@ -32,10 +37,24 @@
   <button onclick="switchTab('Entertainment')">Entertainment</button>
 </div>
 
+<!--Catergories(hidden)-->
+<div id="categoriesSection" style="display:none;">
+    <h2>Categories</h2>
+    <p>#BLACKPEOPLEWINNING - Black Achievements</p>
+    <p>#WEDIDDAT - All Facts Black</p>
+    <p>#BLACKPEOPLEWITHPOWER - Latest Black Politics</p>
+    <p>#WHEREWEFINNAEATAT? - All Things Louisiana Food</p>
+    <p>#HELPABROTHAOUT - Helpful Tips & Tricks</p>
+    <p>#NEEDDAT - Resources</p>
+    <p>#THEGAMEON?? - Sports Related</p>
+    <p>#WELITTTTTT - Entertainment</p>
+  </div>
+
 <!-- Feed -->
 <div id="content">
   <!-- The content for the active tab will appear here -->
 </div>
+</body>
 </html>
 
 

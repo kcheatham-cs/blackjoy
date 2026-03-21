@@ -99,6 +99,14 @@ function askRedemptionQuestion() {
         alert("Black Card Revoked!!!!!");
     }
 }
+// 
+
+function onLoginComplete() {
+    document.getElementById("login").style.display = "none"; // hide login
+    document.getElementById("signupPage").style.display = "none"; // hide signup if needed
+    document.getElementById("tabContainer").style.display = "block"; // show tabs
+    document.getElementById("categoriesSection").style.display = "block"; // show categories
+}
 
 function showSignupPage() {
     document.getElementById("signupForm").style.display = "block";
