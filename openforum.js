@@ -1,5 +1,8 @@
-import {initializeApp} from "firebase/app";
-import {getFirestore, collection, addDoc, onSnapshot, doc, updateDoc} from "firebase/auth";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, serverTimestamp } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyARp3DHryrTKulE4AshTAISMmHmLGrLCRY",
@@ -27,7 +30,7 @@ window.addPost = async function (){
   }
 await addDoc(collection(db,"posts"),{
   message: text,
-  time: new Date(),
+  time: serverTimestamp(),
   likes: 0,
 });
   input.value = "";
@@ -35,14 +38,18 @@ await addDoc(collection(db,"posts"),{
 };
 window.likePost = async function (id,currentLikes){
   let postRef = doc(db,"posts", id);
-  await updateDoc (postRef, {likes: currentLikes +1});
+  await updateDoc (postRef, {likes: currentLikes + 1});
 };
 onSnapshot(collection(db,"posts"), function(snapshot){
   feed.innerHTML = "";
   snapshot.forEach(function(docSnap){
     let post = docSnap.data();
     let id = docSnap.id;
-     let div = document.createElement("div");
+
+    let div = document.createElement("div");
+    div.style.border = "1px solid black";
+    div.style.padding = "10px";
+    div.style.margin = "10px";
   div.className = "post";
   div.innerHTML=
     "<p>" + post.message + "</p>" +
@@ -51,6 +58,7 @@ onSnapshot(collection(db,"posts"), function(snapshot){
       "<small>" +
       (post.time?.toDate()?.toLocaleString() || "") +
       "</small>";
+    feed.appendChild(div);
 
 });
 });
