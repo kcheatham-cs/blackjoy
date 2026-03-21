@@ -1,1 +1,44 @@
+<html>
+    <head>
+
+    </head>
+
+    <body onload="checkVerification()"> 
+        <script src="app.js"></script>
+
+         <!-- Hidden signup form -->
+    <form id="signupForm" style="display: none;">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button type="button" onclick="signUp()">Sign Up</button>
+    </form>
+
+    <!-- Optional login form -->
+    <form id="loginForm">
+        <input type="email" id="logUser" placeholder="Email">
+        <input type="password" id="logPass" placeholder="Password">
+        <button type="button" onclick="login()">Login</button>
+    </form>
+    </body>
+    <div id="tabContainer">
+  <!-- Tabs -->
+  <button onclick="switchTab('Black Achievements')">Black Achievements</button>
+  <button onclick="switchTab('All Facts Black')">All Facts Black</button>
+  <button onclick="switchTab('Black Politics')">Black Politics</button>
+  <button onclick="switchTab('Louisiana Food Related')">Louisiana Food</button>
+  <button onclick="switchTab('Helpful Tips & Tricks')">Tips & Tricks</button>
+  <button onclick="switchTab('Resources')">Resources</button>
+  <button onclick="switchTab('Sports')">Sports</button>
+  <button onclick="switchTab('Entertainment')">Entertainment</button>
+</div>
+
+<!-- Feed -->
+<div id="content">
+  <!-- The content for the active tab will appear here -->
+</div>
+</html>
+
+
+
+
 
