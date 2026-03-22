@@ -157,6 +157,18 @@ body{
   font-size: 14px;
 }
 
+#loginForm button, #signupForm button { 
+  width: 100%;
+  padding: 13px;
+  background: rgb(241, 179, 63);
+  color: #1a0800;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 /* changes i cant currently do:
 -Change button to say lets gooo in loginsignup.html
 -the entry quiz should go on in a seperate html file, so the login can show after the quiz is done 

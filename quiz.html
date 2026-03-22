@@ -36,3 +36,36 @@ function checkAnswers() {
 
 </body>
 </html>
+
+<h2>Answer to enter ✨</h2>
+
+<form id="quizForm">
+    <p>What does WWGITSDTNDLANDAFN mean?</p>
+    <input type="text" id="q1" placeholder="Type your answer">
+
+    <p>Who is your mom NOT?</p>
+    <input type="text" id="q2" placeholder="Type your answer">
+
+    <br><br>
+    <button type="button" onclick="checkAnswers()">Submit</button>
+</form>
+
+<script>
+function checkAnswers() {
+    let q1 = document.getElementById("q1").value.toLowerCase().trim();
+    let q2 = document.getElementById("q2").value.toLowerCase().trim();
+
+    let correctQ1 = "when we go in this store don't touch nothing don't look at nothing don't ask for nothing";
+    let validQ2 = ["your lil friend", "booboo the fool"];
+
+    if (q1 === correctQ1 || validQ2.includes(q2)) {
+    localStorage.setItem("verified", "true");
+    window.location.href = "index.html"; // or signup page
+  } else {
+    alert("Guess you gotta hate from outside the club");
+  }
+}
+</script>
+
+</body>
+</html>
