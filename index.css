@@ -66,8 +66,9 @@ body{
     justify-content: center; /* Centers horizontally */
     align-items: center;  
     color:  rgb(251, 229, 186);
-    height: 50vw;
     font-size: 1.3vw;
+    box-sizing: border-box;
+    padding: 25vw;  
 }
 
 
