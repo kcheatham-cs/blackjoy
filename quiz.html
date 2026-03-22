@@ -5,19 +5,18 @@
 </head>
 <body>
 
-<h2>Answer to enter ✨</h2>
-
 <form id="quizForm">
+    <h2 id = "entryTitle">Answer to enter ✨</h2>
 
     <!-- Q1 -->
     <div id="q1Container">
-        <p>Who is your mom NOT?</p>
+        <h1 class = "question">Who is your mom NOT?</h1>
         <input type="text" id="q1" placeholder="Type your answer">
     </div>
 
     <!-- Q2 (HIDDEN) -->
     <div id="q2Container" style="display: none;">
-        <p>What does WWGITSDTNDLANDAFN mean?</p>
+        <h1 class = "question">What does WWGITSDTNDLANDAFN mean?</p>
         <input type="text" id="q2" placeholder="Type your answer">
     </div>
 
@@ -57,6 +56,7 @@ function checkAnswers() {
             window.location.href = "loginsignup.html";
         } else {
             alert("Guess you gotta hate from outside the club 😭");
+            window.location.href = "index.html";
         }
     }
 }
