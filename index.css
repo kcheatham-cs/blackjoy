@@ -33,9 +33,9 @@ body{
 
 #comeOnIn{
     background-color: rgb(241, 179, 63);
-    color: rgb(251, 229, 186);
+    color: #1a0800;
+    font-weight: bold;
     font-size: 1.3vw;
-    font-style: bold;
     padding: 16px 32px;
     border-radius: 12px;
     font-family : 'Franklin Gothic Medium', Cochin, Georgia, Times, 'Times New Roman', serif ;
@@ -61,13 +61,46 @@ body{
     bottom: 20vw;
 }
 
-#loginForm{
-    display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center;  
-    color:  rgb(251, 229, 186);
-    height: 50vw;
-    font-size: 1.3vw;
+#loginForm, #signupForm {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 12px;              /* space between inputs */
+  padding: 2rem;         
+  max-width: 360px;
+  margin: 0 auto;
+  margin-top: 35vh;
 }
 
+#loginForm input, #signupForm input {
+  width: 100%;           
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgb(246, 219, 164);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#loginForm button, #signupForm button { 
+  width: 100%;
+  padding: 13px;
+  background: rgb(241, 179, 63);
+  color: #1a0800;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* changes i cant currently do:
+-Change button to say lets gooo in loginsignup.html
+-the entry quiz should go on in a seperate html file, so the login can show after the quiz is done 
+    - the landing page button should go to the quiz html file first, then after the quiz that should take you to the login page
+- after loging in the button should take you to the openforum.html files
+
+
+*/
 
