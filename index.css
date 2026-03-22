@@ -55,7 +55,7 @@ body{
 }
 .container2{
     display: inline-block;
-    justify-content: center; /* Centers horizontally */
+    justify-content: center; 
     align-items: flex-start;
     position: absolute;
     bottom: 20vw;
@@ -65,13 +65,14 @@ body{
   display: flex;
   flex-direction: column; 
   align-items: center;
-  gap: 12px;              /* space between inputs */
+  gap: 12px;             
   padding: 2rem;         
   max-width: 360px;
   margin: 0 auto;
   margin-top: 35vh;
 }
 
+/* css for loginsingup page */
 #loginForm input, #signupForm input {
   width: 100%;           
   padding: 12px 14px;
@@ -94,7 +95,7 @@ body{
   font-size: 14px;
   cursor: pointer;
 }
-
+/* css for openforum page*/
 #forumTitle{
     color: rgb(251, 213, 144);
     font-family : 'Franklin Gothic Medium', Cochin, Georgia, Times, 'Times New Roman', serif ;
@@ -130,7 +131,7 @@ body{
 }
 
 #postInput {
-  width: 100%;            /* full width, no more tiny input */
+  width: 100%;            
   padding: 12px 16px;
   background: #1a1a1a;
   border: 1px solid #2a2a2a;
@@ -138,7 +139,6 @@ body{
   color: #F0E6D0;
   font-size: 14px;
   outline: none;
-  /* REMOVE: display:flex, flex-direction, max-width: 20 vw, margin-top: 35vh */
 }
 
 #postInput:focus {
@@ -146,7 +146,7 @@ body{
 }
 
 #postBox button {
-  align-self: flex-end;   /* button sits on the right */
+  align-self: flex-end;  
   background: rgb(241, 179, 63);
   color: #1a0800;
   font-weight: bold;
@@ -157,17 +157,6 @@ body{
   font-size: 14px;
 }
 
-#loginForm button, #signupForm button { 
-  width: 100%;
-  padding: 13px;
-  background: rgb(241, 179, 63);
-  color: #1a0800;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-}
 
 /* changes i cant currently do:
 -Change button to say lets gooo in loginsignup.html
