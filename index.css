@@ -124,7 +124,7 @@ body{
 
 #postBox {
   display: flex;
-  flex-direction: column; /* stacks input above button */
+  flex-direction: column;
   gap: 10vw;
   margin-bottom: 20vw;
   height: 185vw;
@@ -160,21 +160,21 @@ body{
 /* quiz css*/
 #quizForm {
   display: flex;
-  flex-direction: column;  /* THIS stacks everything vertically */
-  align-items: center;     /* centers each element horizontally */
-  gap: 16px;               /* space between each element */
+  flex-direction: column;  
+  align-items: center;    
+  gap: 16px;              
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 16px;
-  max-width: 560px;        /* replaces the vw margins — cleaner */
-  margin: 60px auto;       /* centers the whole form on the page */
-  padding: 8vw 8vw;      /* inner breathing room */
+  max-width: 560px;       
+  margin: 60px auto;      
+  padding: 8vw 8vw;     
 }
 
 #entryTitle {
   color: rgb(251, 213, 144);
   font-family: 'Franklin Gothic Medium', serif;
   text-align: center;
-  font-size: 2.5rem;       /* rem is more consistent than vw for text */
+  font-size: 2.5rem;      
   text-transform: uppercase;
   margin-top: 3vw; 
 }
@@ -185,7 +185,7 @@ body{
   font-size: 1.5rem;
   font-family: 'Franklin Gothic Medium', serif;
   text-transform: capitalize;
-  margin: 0;               /* remove the negative margin-top */
+  margin: 0;              
 }
 
 #q1, #q2 {
@@ -200,11 +200,11 @@ body{
 }
 
 #q1:focus, #q2:focus {
-  border-color: rgb(241, 179, 63);  /* gold outline when clicked */
+  border-color: rgb(241, 179, 63); 
 }
 
 #quizForm button {
-  width: 30%;             /* full width button instead of floating right */
+  width: 30%;           
   background: rgb(241, 179, 63);
   color: #1a0800;
   font-weight: bold;
@@ -215,17 +215,4 @@ body{
   font-size: 14px;
   margin-top: 8px;
 }
-
-
-
-
-
-/* changes i cant currently do:
--Change button to say lets gooo in loginsignup.html
--the entry quiz should go on in a seperate html file, so the login can show after the quiz is done 
-    - the landing page button should go to the quiz html file first, then after the quiz that should take you to the login page
-- after loging in the button should take you to the openforum.html files
-
-
-*/
 
