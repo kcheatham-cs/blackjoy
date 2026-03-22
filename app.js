@@ -74,32 +74,6 @@ function checkVerification(){
     }
 }
 
-//Question #1
-function askInitialQuestion() { 
-    const answer = prompt("What does this mean WWGITSDTNDLANDAFN?"); 
-    const validAnswers = ["when we go in this store don't touch nothing don't look at nothing don't ask for nothing"];
-    if (validAnswers.includes(answer.toLowerCase())) {
-        verified = true;
-        localStorage.setItem("verified", true);
-        showSignUpPage();
-    } else { 
-        askRedemptionQuestion();
-    }
-}
-
-// Redemption question
-function askRedemptionQuestion() {
-    const answer = prompt("Who is your mom not?");
-    const validAnswers = ["your lil friend", "booboo the fool"];
-    if (validAnswers.includes(answer.toLowerCase())) {
-        verified = true;
-        localStorage.setItem("verified", true); 
-        showSignupPage();
-    } else {
-        alert("Black Card Revoked!!!!!");
-    }
-}
-// 
 
 function onLoginComplete() {
     document.getElementById("login").style.display = "none"; // hide login
