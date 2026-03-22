@@ -4,30 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Load CSS file here -->
-    <link rel=" stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
 
-<link rel=" stylesheet" type="text/css" href="index.css" />
-
-    </style>
 </head>
 
 <body>
-
-<header>
-    <h1>Black Joy</h1>
-    <p>For Us. By Us.</p>
+<div id = "opaContainer">
+<header id ="forumContainer">
+    <h1 id = "forumTitle">Black Joy</h1>
+    <p id = "forumSub">For Us. By Us.</p>
 </header>
 
 <div id="forum">
 
     <div id="postBox">
-        <input id="Input" placeholder="What's Da Vibes?" />
+        <textarea id="postInput" placeholder="What's Da Vibes?"></textarea>
         <button onclick="addPost()">Post</button>
         
     </div>
 
     <div id="Feed"></div>
-
+</div>
 </div>
 
 <script type="module" src="app.js"></script>
