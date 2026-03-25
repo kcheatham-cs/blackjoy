@@ -1,28 +1,51 @@
 <html>
 <head>
-    <title>Black Joy App</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Load CSS file here -->
-    <link rel="stylesheet" type="text/css" href="index.css" />
-
+<title>Black Joy Open Forum</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="index.css" />
+<style>
+body { font-family: Arial, sans-serif; }
+#tabContainer button { padding:8px 12px; margin-right:5px; border:none; cursor:pointer; background:#eee; border-radius:5px; }
+#tabContainer button.active { background:#FFD700; font-weight:bold; }
+#Feed { margin-top:20px; }
+.post { margin-bottom:15px; padding:10px; border-bottom:1px solid #ddd; }
+#imgPreview { width:100%; border-radius:8px; max-height:200px; object-fit:cover; }
+</style>
 </head>
-
 <body>
-<div id = "opaContainer">
-<header id ="forumContainer">
-    <h1 id = "forumTitle">Black Joy</h1>
-    <p id = "forumSub">For Us. By Us.</p>
-</header>
 
-<div id="forum">
+<h1>Black Joy Open Forum ✨</h1>
 
-    <div id="postBox">
-        <textarea id="postInput" placeholder="What's Da Vibes?"></textarea>
-        <button onclick="addPost()">Post</button>    
-    </div>
+<!-- Tabs -->
+<div id="tabContainer">
+<button onclick="switchTab('#BLACKPEOPLEWINNING)">Black Achievements</button>
+<button onclick="switchTab('#WEDIDDAT)">All Facts Black</button>
+<button onclick="switchTab('#BLACKPEOPLEWITHPOWER)">Black Politics</button>
+<button onclick="switchTab('#WHEREWEFINNAEATAT)">Louisiana Food</button>
+<button onclick="switchTab('HELPABROTHAOUT)">Tips & Tricks</button>
+<button onclick="switchTab('NEEDDAT)">Resources</button>
+<button onclick="switchTab('THEGAMEON?')">Sports</button>
+<button onclick="switchTab('#WELITTTTTT')">Entertainment</button>
+</div>
 
-    <div id="Feed">
+<!-- Post Box -->
+<div id="postBox" style="margin-top:20px;">
+<textarea id="postInput" placeholder="What's Da Vibes? Use #hashtags!" style="width:100%; height:80px;"></textarea>
+<input type="file" id="imageInput" accept="image/*" style="display:none;" onchange="previewImg(event)">
+<div id="imgPreviewWrap" style="display:none; position:relative; margin-top:8px;">
+<img id="imgPreview" />
+<button onclick="removeImg()" style="position:absolute; top:6px; right:6px; background:rgba(0,0,0,.6); color:#fff; border:none; border-radius:50%; width:26px; height:26px; cursor:pointer;">✕</button>
+</div>
+<div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+<button onclick="document.getElementById('imageInput').click()">📷 Photo</button>
+<button onclick="addPost()">Post ✦</button>
+</div>
+</div>
+
+<!-- Feed -->
+<div id="Feed">
+     <div id="Feed">
 
         <div class="post-card"> 
             <div class="post-tag">#BLACKPEOPLEWINNING</div> 
@@ -85,7 +108,135 @@
 </div>
 </div>
 
-<script type="module" src="app.js"></script>
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp, query, where, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+// Firebase config — replace with your keys
+const firebaseConfig = {
+apiKey: "AIzaSyARp3DHryrTKulE4AshTAISMmHmLGrLCRY",
+authDomain: "black-joy.firebaseapp.com",
+projectId: "black-joy",
+storageBucket: "black-joy.appspot.com",
+messagingSenderId: "415223431441",
+appId: "1:415223431441:web:2d9cd50eecca45a44fccb0",
+measurementId: "G-8XS97N87QE"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Categories
+const HASHTAGS = [
+"Black Achievements",
+"All Facts Black",
+"Black Politics",
+"Louisiana Food Related",
+"Helpful Tips & Tricks",
+"Resources",
+"Sports",
+"Entertainment"
+];
+
+let activeTab = "Black Achievements";
+
+// Switch tabs
+function switchTab(tabName) {
+activeTab = tabName;
+highlightActiveTab();
+loadPosts(activeTab);
+}
+
+// Highlight current tab
+function highlightActiveTab() {
+document.querySelectorAll("#tabContainer button").forEach(btn => {
+btn.classList.toggle("active", btn.textContent === activeTab);
+});
+}
+
+// Load posts from Firestore
+async function loadPosts(tabName) {
+const Feed = document.getElementById("Feed");
+Feed.innerHTML = "Loading posts...";
+const q = query(collection(db, "posts"), where("category", "==", tabName), orderBy("timestamp", "desc"));
+const snapshot = await getDocs(q);
+
+if (snapshot.empty) {
+Feed.innerHTML = "<p>No posts yet for this category.</p>";
+return;
+}
+
+Feed.innerHTML = "";
+snapshot.forEach(doc => {
+const post = doc.data();
+const postDiv = document.createElement("div");
+postDiv.className = "post";
+postDiv.innerHTML = `
+<strong>${post.author || "Anonymous"}</strong>
+<em>${post.timestamp?.seconds ? new Date(post.timestamp.seconds*1000).toLocaleString() : ""}</em>
+<p>${post.content}</p>
+${post.image ? `<img src="${post.image}" style="width:100%; max-height:200px; object-fit:cover; border-radius:8px;" />` : ""}
+`;
+Feed.appendChild(postDiv);
+});
+}
+
+// Add a post
+async function addPost() {
+const content = document.getElementById("postInput").value.trim();
+if (!content) return alert("Cannot post empty content!");
+
+const post = {
+author: "guest@example.com", // Temporary placeholder for testing
+content: content,
+category: activeTab,
+timestamp: serverTimestamp()
+};
+
+const imgPreview = document.getElementById("imgPreview");
+if (imgPreview.src && imgPreview.style.display !== "none") {
+post.image = imgPreview.src;
+}
+
+try {
+await addDoc(collection(db, "posts"), post);
+
+// Clear input
+document.getElementById("postInput").value = "";
+document.getElementById("imgPreviewWrap").style.display = "none";
+
+// Refresh feed
+loadPosts(activeTab);
+alert("Post added!");
+} catch (e) {
+console.error(e);
+alert("Failed to post!");
+}
+}
+
+// Image preview
+function previewImg(event) {
+const file = event.target.files[0];
+if (!file) return;
+const reader = new FileReader();
+reader.onload = e => {
+document.getElementById("imgPreview").src = e.target.result;
+document.getElementById("imgPreviewWrap").style.display = "block";
+};
+reader.readAsDataURL(file);
+}
+
+// Remove image
+function removeImg() {
+document.getElementById("imageInput").value = "";
+document.getElementById("imgPreviewWrap").style.display = "none";
+}
+
+// Initialize page
+switchTab(activeTab);
+</script>
 
 </body>
 </html>
